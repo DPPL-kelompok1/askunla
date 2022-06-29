@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+require 'vendor/autoload.php';
+use \Mailjet\Resources;
+
+
 class Users extends CI_Controller
 {
 
@@ -67,47 +71,32 @@ class Users extends CI_Controller
 	}
 	private function sendmail($id)
 	{
-		$data = $this->Users_model->read_by($id);
-		// Konfigurasi email
-		$config = [
-			'mailtype'  => 'html',
-			'charset'   => 'utf-8',
-			'protocol'  => 'smtp',
-			'smtp_host' => 'smtp.googlemail.com',
-			'smtp_user' => 'pwftubes21@gmail.com',  // Email gmail
-			'smtp_pass'   => 'PWFTubes2021',  // Password gmail
-			'smtp_crypto' => 'ssl',
-			'smtp_port'   => 465,
-			'newline' => "\r\n"
-		];
-
-		$this->email->initialize($config);
-		// Load library email dan konfigurasinya
-		$this->load->library('email', $config);
-
-		// Email dan nama pengirim
-		$this->email->from('pwftubes21@gmail.com', 'Askunla.com');
-
-		// Email penerima
-		$this->email->to($data->email); // Ganti dengan email tujuan
-
-		// Lampiran email, isi dengan url/path file
-		//$this->email->attach('https://masrud.com/content/images/20181215150137-codeigniter-smtp-gmail.png');
-
-		// Subject email
-		$this->email->subject('Your Account has been Verified! | Askunla.com');
-
-		// Isi email
-		$pass = $data->password;
-		$fullname = $data->fullname;
-		$this->email->message("Selamat $fullname, Akun anda sudah bisa digunakan. <br><br> Password : $pass  <br><br> Klik <strong><a href='http://localhost/askunla/index.php/auth/login' target='_blank' rel='noopener'>disini</a></strong> untuk login.");
-
-		// Tampilkan pesan sukses atau error
-		if ($this->email->send()) {
-			echo $this->email->send();
-		} else {
-			echo $this->email->print_debugger();
-			die;
-		}
+		 // Konfigurasi email
+		 $this->load->model('Users_model');
+		 $var = $this->Users_model->read_by($id);
+ 
+		 $mj = new \Mailjet\Client('eeff72d050b4d364080d6a1b4b4dda20','0fdd4209c29a0915863eb2f9efb8ee9b',true,['version' => 'v3.1']);
+		 $body = [
+		 'Messages' => [
+			 [
+			 'From' => [
+				 'Email' => "pwftubes21@gmail.com",
+				 'Name' => "ASKUNLA"
+			 ],
+			 'To' => [
+				 [
+				 'Email' => $var->email,
+				 'Name' => $var->username
+				 ]
+			 ],
+			 'Subject' => "Verifikasi Akun",
+			 'TextPart' => "My first Mailjet email",
+			 'HTMLPart' => "Dear $var->fullname,<br>This is your new password : $var->password<br> Do not tell anyone your password, for the security of your account.<br>Thank You.",
+			 'CustomID' => "AppGettingStartedTest"
+			 ]
+		 ]
+		 ];
+		 $response = $mj->post(Resources::$Email, ['body' => $body]);
+		 $response->success() && var_dump($response->getData());
 	}
 }

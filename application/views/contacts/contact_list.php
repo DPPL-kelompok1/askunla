@@ -30,8 +30,8 @@
   
 </head>
 <style>
-# Header
---------------------------------------------------------------*/
+/* # Header */
+
  #header {
     transition: all 0.5s;
     z-index: 997;
