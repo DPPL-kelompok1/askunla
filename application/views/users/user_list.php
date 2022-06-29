@@ -345,7 +345,7 @@
         <th>TTL</th>
         <th>No. Telp</th>
         <th>Email</th>
-        <th colspan="2">Action</th>
+        <th colspan="3">Action</th>
       </tr>
       <?php $i = 1;
       foreach ($user as $usr) { ?>
@@ -360,7 +360,7 @@
           <td style="font-size:12px;"><?= $usr->tmpt_tgl_lahir ?></td>
           <td><?= $usr->no_telp ?></td>
           <td style="font-size:14px;"><?= $usr->email ?></td>
-          <!--<td><a href="<?= site_url('users/edit/' . $usr->userid) ?>" title="EDIT"><i class="fas fa-edit" style="font-size:30px; color:green;"></i></a></td> -->
+          <td><a href="<?= site_url('users/edit/' . $usr->userid) ?>" title="EDIT"><i class="fas fa-edit" style="font-size:30px; color:green;"></i></a></td>
           <td><a href="<?= site_url('users/delete/' . $usr->userid) ?>" onclick="return confirm('Are you sure?')" title="DELETE"><i class="fas fa-minus-circle" style="font-size:30px; color:red;"></i></a></td>
           <td>
             <?php if ($usr->verifikasi == '1') echo 'Verified';
