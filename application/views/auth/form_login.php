@@ -71,7 +71,7 @@
 					<div><?= validation_errors() ?></div>
 					<div class="text-center p-t-136">
 						<a class="txt2" href="<?= site_url('auth/regist') ?>">
-							Create your Account
+							Register Here
 							<i class="fas fa-user-circle m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
