@@ -43,7 +43,7 @@
 
 				<form action="" method="post" class="login100-form validate-form">
 					<span class="login100-form-title">
-						REGISTER
+						CREATE YOUR ACCOUNT
 
 					</span>
 					<div class="wrap-input100 validate-input" data-validate="Valid NPM is required: 41155050000">

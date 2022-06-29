@@ -1,5 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+require 'vendor/autoload.php';
+use \Mailjet\Resources;
+
 
 class Requests extends CI_Controller
 {
@@ -42,10 +45,10 @@ class Requests extends CI_Controller
 	{
 
 		$var = $this->Requests_model->readby1($id);
-		if ($var->sendmail == '0') {
-			$this->session->set_flashdata('msg', '<p style="background-color:grey; letter-spacing: 3px; color:black; font-weight: bold; opacity:0.8; text-align:center; border-radius:20px; width:310px; padding:10px; margin: auto"> Please Send Mail First ! </p>');
-			redirect('requests');
-		} else {
+		// if ($var->sendmail == '0') {
+		// 	$this->session->set_flashdata('msg', '<p style="background-color:grey; letter-spacing: 3px; color:black; font-weight: bold; opacity:0.8; text-align:center; border-radius:20px; width:310px; padding:10px; margin: auto"> Please Send Mail First ! </p>');
+		// 	redirect('requests');
+		//} else {
 			if ($this->input->post('submit')) {
 				$this->Requests_model->responsacc($id);
 				if ($this->db->affected_rows() > 0) {
@@ -58,7 +61,7 @@ class Requests extends CI_Controller
 			$prev['cont'] = $this->Contacts_model->read_by($var->id_cont);
 			$prev['req'] = $this->Requests_model->readby1($var->req_id);
 			$this->load->view('requests/previewreq_form', $prev);
-		}
+		
 	}
 	public function responsdec($id)
 	{
@@ -77,7 +80,7 @@ class Requests extends CI_Controller
 	public function sendmailprivate($id)
 	{
 		if ($this->input->post('submit')) {
-			$this->sendmail();
+			$this->sendmail($id);
 			$this->Requests_model->sendmail($id);
 			if ($this->db->affected_rows() > 0) {
 				$this->session->set_flashdata('msg', '<p style="background-color:grey; letter-spacing: 3px; color:black; font-weight: bold; opacity:0.8; text-align:center; border-radius:20px; width:310px; padding:10px; margin: auto"> Your Mail is Sent ! </p>');
@@ -94,49 +97,39 @@ class Requests extends CI_Controller
 		$quest['req'] = $this->Requests_model->readby1($var->req_id);
 		$this->load->view('requests/sendmail_form', $quest);
 	}
-	public function sendmail()
+
+	public function sendmail($id)
 	{
 		// Konfigurasi email
-		$config = [
-			'mailtype'  => 'html',
-			'charset'   => 'utf-8',
-			'protocol'  => 'smtp',
-			'smtp_host' => 'smtp.googlemail.com',
-			'smtp_user' => 'pwftubes21@gmail.com',  // Email gmail
-			'smtp_pass'   => 'PWFTubes2021',  // Password gmail
-			'smtp_crypto' => 'ssl',
-			'smtp_port'   => 465,
-			'newline' => "\r\n"
+		$this->load->model('Users_model');
+        $var = $this->Users_model->read_by($id);
+
+		$mj = new \Mailjet\Client('eeff72d050b4d364080d6a1b4b4dda20','0fdd4209c29a0915863eb2f9efb8ee9b',true,['version' => 'v3.1']);
+		$msg = $this->input->post('Messages');
+		$body = [
+		'Messages' => [
+			[
+			'From' => [
+				'Email' => "pwftubes21@gmail.com",
+				'Name' => "ASKUNLA"
+			],
+			'To' => [
+				[
+				'Email' => $var->email,
+				'Name' => $var->username
+				]
+			],
+			
+			'Subject' => "Confirm For Request",
+			'TextPart' => "My first Mailjet email",
+			'HTMLPart' => "Dear Mr./Mrs., <br>A student from Langlangbuana University named $msg <br>Please, reply this email with your
+			Confirmation YES/NO!<br>Thank You for Attention, Have a nice day!",
+			'CustomID' => "AppGettingStartedTest"
+			]
+		]
 		];
-
-		$this->email->initialize($config);
-		// Load library email dan konfigurasinya
-		$this->load->library('email', $config);
-
-		// Email dan nama pengirim
-		$this->email->from('pwftubes21@gmail.com', 'Askunla.com');
-
-		// Email penerima
-		$this->email->to($this->input->post('address')); // Ganti dengan email tujuan
-
-		// Lampiran email, isi dengan url/path file
-		//$this->email->attach('https://masrud.com/content/images/20181215150137-codeigniter-smtp-gmail.png');
-
-		// Subject email
-		$this->email->subject($this->input->post('subject'));
-
-		// Isi email
-		$msg = $this->input->post('message');
-		$this->email->message("Dear Mr./Mrs.,<br>A Student from Langlangbuana University named $msg <br>Please, reply this email with
-		your confirmation YES/NO!<br>Thank You for Attention, Have a nice day!");
-
-		// Tampilkan pesan sukses atau error
-		if ($this->email->send()) {
-			echo $this->email->send();
-		} else {
-			echo $this->email->print_debugger();
-			die;
-		}
+		$response = $mj->post(Resources::$Email, ['body' => $body]);
+		$response->success() && var_dump($response->getData());
 	}
 
 	public function cont_general()
