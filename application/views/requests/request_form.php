@@ -134,6 +134,8 @@
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
+                                    <br>
+                                    <small><i>*Choose anything you need</i> </small>
                                 </div>
                             </div>
                             <div class="col-6">
