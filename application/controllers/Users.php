@@ -19,6 +19,10 @@ class Users extends CI_Controller
 		$type = 'mahasiswa';
 		$data['user'] = $this->Users_model->read_type($type);
 		$this->load->view('users/user_list', $data);
+		
+		$dosen = 'dosen';
+		$data['user'] = $this->Users_model->read_type($dosen);
+		$this->load->view('users/user_list', $data);
 	}
 
 	public function add()

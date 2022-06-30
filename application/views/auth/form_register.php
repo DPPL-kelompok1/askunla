@@ -34,7 +34,7 @@
 </style>
 
 <body>
-	<div class="limiter">
+<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
@@ -43,11 +43,11 @@
 
 				<form action="" method="post" class="login100-form validate-form">
 					<span class="login100-form-title">
-						CREATE YOUR ACCOUNT
+						REGISTER
 
 					</span>
 					<div class="wrap-input100 validate-input" data-validate="Valid NPM is required: 41155050000">
-						<input class="input100" type="text" name="username" placeholder="NPM">
+						<input class="input100" type="text" name="username" placeholder="NPM / NIP">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fas fa-id-badge" aria-hidden="true"></i>
@@ -63,6 +63,20 @@
 						</span>
 					</div>
 					<?= form_error('fullname') ?>
+
+					<div class="wrap-input100 validate-input" data-validate="Valid type is required: Mahasiswa, Dosen, Tenaga Kependidikan">
+					<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fas fa-id-badge" aria-hidden="true"></i>
+						</span>
+					<select class="input100" type="text" name="type" placeholder="Type">
+					<option value="">User Type</option>
+						<option value="Mahasiswa">Mahasiswa</option>
+						<option value="Dosen">Dosen</option>
+						<option value="Tenaga Pendidikan">Tenaga Kependidikan</option>
+					</select>
+					</div>
+					<?= form_error('type') ?>
 
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email" placeholder="Email">
