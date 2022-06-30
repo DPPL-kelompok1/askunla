@@ -52,13 +52,12 @@ class Auth extends CI_Controller
         if ($this->input->post('login') && $this->validation('login')) {
             $login = $this->Auth_model->getuser($this->input->post('username'));
             if ($login != NULL) {
-                if (password_verify($this->input->post('password'), $login->password)  && $login->verifikasi == '1') {
+                if (password_verify($this->input->post('password'), $login->password) && $login->verifikasi == '1') {
                     $data = array(
                         'userid' => $login->userid,
                         'username' => $login->username,
                         'fullname' => $login->fullname,
                         'type' => $login->type,
-                        'userid' => $login->userid,
                         'identity' => $login->no_identitas,
                         'photo' => $login->photo
                     );
@@ -74,7 +73,6 @@ class Auth extends CI_Controller
         }
         $this->load->view('auth/form_login');
     }
-
     public function validation($username)
     {
         $this->load->library('form_validation');
