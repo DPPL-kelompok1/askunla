@@ -120,21 +120,17 @@
                                     <label class="label">Specific Contact</label>
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Phone/Telp.
-                                            <input type="radio" name="contact" value="Phone/Telp." id="" required>
+                                            <input type="checkbox" name="contact" value="Phone/Telp." id="" required>
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container">WhatsApp
-                                            <input type="radio"name="contact" value="WhatsApp" id="" required>
+                                            <input type="checkbox"name="contact" value="WhatsApp" id="" required>
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
 									<div class="p-t-10">
                                         <label class="radio-container m-r-45">Social Media
-                                            <input type="radio" name="contact" value="Social Media" id="" required>
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="radio-container">All Contact
-                                            <input type="radio"name="contact" value="All Contact" id="" required>
+                                            <input type="checkbox" name="contact" value="Social Media" id="" required>
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
