@@ -17,6 +17,9 @@ class Users_model extends CI_Model
 			'tmpt_tgl_lahir' => $this->input->post('tmpt_tgl_lahir'),
 			'no_telp' => $this->input->post('no_telp'),
 			'email' => $this->input->post('email'),
+			'prodi' => $this->input->post('prodi'),
+            'fakultas' => $this->input->post('fakultas'),
+            'whatsapp' => $this->input->post('whatsapp')
 		);
 		$this->db->insert('user', $data);
 	}
@@ -34,7 +37,7 @@ class Users_model extends CI_Model
 		return $query->row();
 	}
 
-	public function read_type($type)
+	public function readtype($type)
 	{
 		$this->db->where('type', $type);
 		$query = $this->db->get('user');
@@ -61,6 +64,9 @@ class Users_model extends CI_Model
 			'tmpt_tgl_lahir' => $this->input->post('tmpt_tgl_lahir'),
 			'no_telp' => $this->input->post('no_telp'),
 			'email' => $this->input->post('email'),
+			'prodi' => $this->input->post('prodi'),
+            'fakultas' => $this->input->post('fakultas'),
+            'whatsapp' => $this->input->post('whatsapp')
 		);
 		$this->db->where('userid', $id);
 		$this->db->update('user', $data);

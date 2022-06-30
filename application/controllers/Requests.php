@@ -38,7 +38,7 @@ class Requests extends CI_Controller
 			}
 			redirect('requests/cont_privt');
 		}
-		$data['contacts'] = $this->Contacts_model->read_by($id);
+		$data['users'] = $this->Users_model->read_by($id);
 		$this->load->view('requests/request_form', $data);
 	}
 	public function responsacc($id)
@@ -58,7 +58,7 @@ class Requests extends CI_Controller
 				}
 				redirect('requests');
 			}
-			$prev['cont'] = $this->Contacts_model->read_by($var->id_cont);
+			$prev['usr'] = $this->Users_model->read_by($var->userid);
 			$prev['req'] = $this->Requests_model->readby1($var->req_id);
 			$this->load->view('requests/previewreq_form', $prev);
 		
@@ -92,7 +92,7 @@ class Requests extends CI_Controller
 		}
 
 		$var = $this->Requests_model->readby1($id);
-		$quest['cont'] = $this->Contacts_model->read_by($var->id_cont);
+		// $quest['cont'] = $this->Contacts_model->read_by($var->id_cont);
 		$quest['usr'] = $this->Users_model->read_by($var->userid);
 		$quest['req'] = $this->Requests_model->readby1($var->req_id);
 		$this->load->view('requests/sendmail_form', $quest);
@@ -134,13 +134,13 @@ class Requests extends CI_Controller
 
 	public function cont_general()
 	{
-		$list['gencont'] = $this->Contacts_model->readtype('General');
+		$list['gencont'] = $this->Users_model->readtype('General');
 		$this->load->view('requests/generalcont_list', $list);
 	}
 
 	public function cont_privt()
 	{
-		$list['privcont'] = $this->Contacts_model->readtype('Private');
+		$list['privcont'] = $this->Users_model->read();
 		$this->load->view('requests/privcont_list', $list);
 	}
 	public function delete($id)

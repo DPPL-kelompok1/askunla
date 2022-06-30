@@ -30,8 +30,7 @@
   
 </head>
 <style>
-# Header
---------------------------------------------------------------*/
+
 #header {
   transition: all 0.5s;
   z-index: 997;
@@ -328,15 +327,15 @@
 		  <th>Request</th>
 		</tr>
 		<?php $i = 1;
-		foreach ($privcont as $con) { ?>
+		foreach ($privcont as $usr) { ?>
 		  <tr>
 			<td><?= $i++ ?></td>
-			<td><?= $con->cont_nama ?></td>
-			<td><?= $con->cont_jobdesk ?></td>
-			<td><?= $con->cont_prodi ?></td>
-			<td><?= $con->cont_fakultas ?></td>
+			<td><?= $usr->fullname ?></td>
+			<td><?= $usr->type ?></td>
+			<td><?= $usr->prodi ?></td>
+			<td><?= $usr->fakultas ?></td>
 			<td>
-			  <a href="<?= site_url('requests/add/' . $con->cont_id) ?>">Request</a>
+			  <a href="<?= site_url('requests/add/' . $usr->userid) ?>">Request</a>
 			</td>
 		  </tr>
 		<?php } ?>

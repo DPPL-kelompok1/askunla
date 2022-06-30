@@ -66,20 +66,29 @@
     $fullname = '';
     $no_identitas = '';
     $alamat = '';
+    $type= '';
     $jenis_kelamin = '';
     $tmpt_tgl_lahir = '';
     $no_telp = '';
     $email = '';
+    $whatsapp = '';
+    $prodi = '';
+    $fakultas = '';
 
     if (isset($user)) {
         $username       = $user->username;
         $fullname       = $user->fullname;
         $no_identitas   = $user->no_identitas;
         $alamat         = $user->alamat;
+        $type           = $user->type;
         $jenis_kelamin  = $user->jenis_kelamin;
         $tmpt_tgl_lahir = $user->tmpt_tgl_lahir;
         $no_telp        = $user->no_telp;
         $email          = $user->email;
+        $whatsapp       = $user->whatsapp;
+        $prodi          = $user->prodi;
+        $fakultas       = $user->fakultas;
+
     }
     ?>
     <div class="page-wrapper">
@@ -109,6 +118,14 @@
                                     <input class="input--style-4" type="text"  name="no_identitas" value="<?= set_value('no_identitas', $no_identitas) ?>" required>
                                 </div>
                             </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Type</label>
+                                    <input class="input--style-4" type="text"  name="type" value="<?= set_value('type', $type) ?>" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Gender</label>
@@ -147,11 +164,34 @@
                                </div>
                             </div>
                         
-						<div class="col-6">
-                                <div class="input-group">
-                                    <label class="label">Email</label>
-                                    <input class="input--style-4" type="email" name="email" value="<?= set_value('email', $email) ?>" required>
-                               </div>
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">Email</label>
+                                        <input class="input--style-4" type="email" name="email" value="<?= set_value('email', $email) ?>" required>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">WhatsApp</label>
+                                        <input class="input--style-4" type="text" name="whatsapp" value="<?= set_value('whatsapp', $whatsapp) ?>" required">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">Prodi</label>
+                                        <input class="input--style-4" type="prodi" name="prodi" value="<?= set_value('prodi', $prodi) ?>" required>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">Fakultas</label>
+                                        <input class="input--style-4" type="text" name="fakultas" value="<?= set_value('fakultas', $fakultas) ?>" required">
+                                    </div>
+                                </div>
                             </div>
 						
 <!--						

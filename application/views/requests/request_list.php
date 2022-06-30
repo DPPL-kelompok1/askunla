@@ -369,7 +369,7 @@
         <tr>
           <td><?= $i++ ?></td>
           <td><?= $req->req_tgl ?></td>
-          <td><?= $req->userid ?></td>
+          <td><?= $req->fullname ?></td>
           <td><?= $req->id_cont ?></td>
           <td><?= $req->specify ?></td>
           <td><?= $req->reason ?></td>

@@ -29,6 +29,7 @@ class Auth_model extends CI_Model
             'email' => $this->input->post('email')
         );
         $this->db->insert('user', $data);
+        $this->db->insert('backup', $data);
     }
 
     public function changepass()
@@ -74,7 +75,10 @@ class Auth_model extends CI_Model
             'jenis_kelamin' => $this->input->post('jenis_kelamin'),
             'tmpt_tgl_lahir' => $this->input->post('tmpt_tgl_lahir'),
             'no_telp' => $this->input->post('no_telp'),
-            'email' => $this->input->post('email')
+            'email' => $this->input->post('email'),
+            'whatsapp' => $this->input->post('whatsapp'),
+            'prodi' => $this->input->post('prodi'),
+            'fakultas' => $this->input->post('fakultas')
         );
         $this->db->where('userid', $userid);
         $this->db->update('user', $data);
