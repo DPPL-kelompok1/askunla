@@ -38,17 +38,17 @@ class Requests extends CI_Controller
 			}
 			redirect('requests/cont_privt');
 		}
-		$data['users'] = $this->Users_model->read_by($id);
+		$data['contacts'] = $this->Contacts_model->read_by($id);
 		$this->load->view('requests/request_form', $data);
 	}
 	public function responsacc($id)
 	{
 
 		$var = $this->Requests_model->readby1($id);
-		// if ($var->sendmail == '0') {
-		// 	$this->session->set_flashdata('msg', '<p style="background-color:grey; letter-spacing: 3px; color:black; font-weight: bold; opacity:0.8; text-align:center; border-radius:20px; width:310px; padding:10px; margin: auto"> Please Send Mail First ! </p>');
-		// 	redirect('requests');
-		//} else {
+		if ($var->sendmail == '0') {
+			$this->session->set_flashdata('msg', '<p style="background-color:grey; letter-spacing: 3px; color:black; font-weight: bold; opacity:0.8; text-align:center; border-radius:20px; width:310px; padding:10px; margin: auto"> Please Send Mail First ! </p>');
+			redirect('requests');
+		} else {
 			if ($this->input->post('submit')) {
 				$this->Requests_model->responsacc($id);
 				if ($this->db->affected_rows() > 0) {
@@ -58,11 +58,12 @@ class Requests extends CI_Controller
 				}
 				redirect('requests');
 			}
-			$prev['usr'] = $this->Users_model->read_by($var->userid);
+			$prev['cont'] = $this->Contacts_model->read_by($var->id_cont);
 			$prev['req'] = $this->Requests_model->readby1($var->req_id);
 			$this->load->view('requests/previewreq_form', $prev);
-		
+		}
 	}
+
 	public function responsdec($id)
 	{
 		$var = $this->Requests_model->readby1($id);
@@ -77,6 +78,7 @@ class Requests extends CI_Controller
 			redirect('requests');
 		}
 	}
+	
 	public function sendmailprivate($id)
 	{
 		if ($this->input->post('submit')) {
@@ -92,7 +94,7 @@ class Requests extends CI_Controller
 		}
 
 		$var = $this->Requests_model->readby1($id);
-		// $quest['cont'] = $this->Contacts_model->read_by($var->id_cont);
+		$quest['cont'] = $this->Contacts_model->read_by($var->id_cont);
 		$quest['usr'] = $this->Users_model->read_by($var->userid);
 		$quest['req'] = $this->Requests_model->readby1($var->req_id);
 		$this->load->view('requests/sendmail_form', $quest);
@@ -140,7 +142,11 @@ class Requests extends CI_Controller
 
 	public function cont_privt()
 	{
-		$list['privcont'] = $this->Users_model->read();
+		$list['privcont'] = $this->Contacts_model->readtype('Dosen');
+		$this->load->view('requests/privcont_list', $list);
+		$list['privcont'] = $this->Contacts_model->readtype('Mahasiswa');
+		$this->load->view('requests/privcont_list', $list);
+		$list['privcont'] = $this->Contacts_model->readtype('Tenaga Kependidikan');
 		$this->load->view('requests/privcont_list', $list);
 	}
 	public function delete($id)

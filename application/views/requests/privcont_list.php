@@ -327,15 +327,15 @@
 		  <th>Request</th>
 		</tr>
 		<?php $i = 1;
-		foreach ($privcont as $usr) { ?>
+		foreach ($privcont as $con) { ?>
 		  <tr>
 			<td><?= $i++ ?></td>
-			<td><?= $usr->fullname ?></td>
-			<td><?= $usr->type ?></td>
-			<td><?= $usr->prodi ?></td>
-			<td><?= $usr->fakultas ?></td>
+			<td><?= $con->fullname ?></td>
+			<td><?= $con->type ?></td>
+			<td><?= $con->prodi ?></td>
+			<td><?= $con->fakultas ?></td>
 			<td>
-			  <a href="<?= site_url('requests/add/' . $usr->userid) ?>">Request</a>
+			  <a href="<?= site_url('requests/add/' . $con->cont_id) ?>">Request</a>
 			</td>
 		  </tr>
 		<?php } ?>

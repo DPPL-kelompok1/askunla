@@ -97,7 +97,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Contact ID</label>
-                                    <input class="input--style-4" type="text" name="cont_id" id="" value="<?= $users->userid; ?>">
+                                    <input class="input--style-4" type="text" name="cont_id" id="" value="<?= $contacts->cont_id; ?>">
                                 </div>
                             </div>
                         </div>
@@ -105,13 +105,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Contact Name</label>
-                                    <input class="input--style-4" type="text" name="" id="" value="<?= $users->fullname; ?>" disabled>
+                                    <input class="input--style-4" type="text" name="" id="" value="<?= $contacts->fullname; ?>" disabled>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Contact As</label>
-                                    <input class="input--style-4" type="text" name="" id="" value="<?= $users->type; ?>" disabled>
+                                    <input class="input--style-4" type="text" name="" id="" value="<?= $contacts->type; ?>" disabled>
                                 </div>
                             </div>
                         </div>

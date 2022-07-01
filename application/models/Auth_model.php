@@ -29,7 +29,7 @@ class Auth_model extends CI_Model
             'email' => $this->input->post('email')
         );
         $this->db->insert('user', $data);
-        $this->db->insert('backup', $data);
+        $this->db->insert('contact', $data);
     }
 
     public function changepass()
