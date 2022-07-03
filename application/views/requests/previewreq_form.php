@@ -108,11 +108,6 @@ Accepted [<?php date_default_timezone_set('Asia/Jakarta');
 
 Whatsapp : <?= $cont->whatsapp ?>
 
-<?php } else if ($req->specify == 'Social Media') { ?>
-Accepted [<?php date_default_timezone_set('Asia/Jakarta');
-          echo date("Y-m-d h:i:sa"); ?>]
-
-Social Media : <?= $cont->cont_sosmed ?>
 <?php } ?>
 									  </textarea>
               </div>

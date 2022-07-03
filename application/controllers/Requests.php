@@ -142,13 +142,18 @@ class Requests extends CI_Controller
 
 	public function cont_privt()
 	{
-		$list['privcont'] = $this->Contacts_model->readtype('Dosen');
-		$this->load->view('requests/privcont_list', $list);
-		$list['privcont'] = $this->Contacts_model->readtype('Mahasiswa');
-		$this->load->view('requests/privcont_list', $list);
-		$list['privcont'] = $this->Contacts_model->readtype('Tenaga Kependidikan');
+		$list['privcont'] = $this->Contacts_model->read();
 		$this->load->view('requests/privcont_list', $list);
 	}
+
+	public function reader()
+	{
+		if ($this->input->post('sorting')) {
+			$data['privcont'] = $this->Requests_model->readtype1($this->input->post('type'));
+			$this->load->view('requests/privcont_list', $data);
+		}
+	}
+
 	public function delete($id)
 	{
 		$this->requests_model->delete($id);
