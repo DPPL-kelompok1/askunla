@@ -71,8 +71,8 @@
 						</span>
 					<select class="input100" type="text" name="type" placeholder="Type">
 					<option value="">User Type</option>
-						<option value="Mahasiswa">Mahasiswa</option>
 						<option value="Dosen">Dosen</option>
+						<option value="Mahasiswa">Mahasiswa</option>
 						<option value="Tenaga Kependidikan">Tenaga Kependidikan</option>
 					</select>
 					</div>

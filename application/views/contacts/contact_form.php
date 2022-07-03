@@ -122,14 +122,14 @@
 						<div class="row row-space">
 							<div class="col-2">
 								<div class="input-group">
-									<label class="label">Prodi</label>
-									<input class="input--style-4" type="text" name="prodi" value="<?= set_value('prodi', $prodi) ?>" required>
+									<label class="label">Fakultas</label>
+									<input class="input--style-4" type="text" name="fakultas" value="<?= set_value('fakultas', $fakultas) ?>" required>
 								</div>
 							</div>
 							<div class="col-2">
 								<div class="input-group">
-									<label class="label">Fakultas</label>
-									<input class="input--style-4" type="text" name="fakultas" value="<?= set_value('fakultas', $fakultas) ?>" required>
+									<label class="label">Prodi</label>
+									<input class="input--style-4" type="text" name="prodi" value="<?= set_value('prodi', $prodi) ?>" required>
 								</div>
 							</div>
 						</div>
