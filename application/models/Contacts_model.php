@@ -33,7 +33,7 @@ class Contacts_model extends CI_Model
 			$query = $this->db->get('contact');
 			return $query->result();
 		} else {
-			$this->db->where('cont_type', $type);
+			$this->db->where('type', $type);
 			$query = $this->db->get('contact');
 			return $query->result();
 		}

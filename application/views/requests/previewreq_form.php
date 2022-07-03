@@ -74,7 +74,7 @@
             <div class="col-6">
               <div class="input-group">
                 <label class="label">Request Contact</label>
-                <input class="input--style-4" type="text" name="contact" id="" value="ID Contact <?= $cont->cont_id ?> / Contact Name <?= $cont->cont_nama ?>">
+                <input class="input--style-4" type="text" name="contact" id="" value="ID Contact <?= $cont->cont_id ?> / Contact Name <?= $cont->fullname; ?>">
               </div>
             </div>
             <div class="col-6">
@@ -90,27 +90,23 @@
 <?php if ($req->specify == 'All Contact') { ?>
 Accepted [<?php date_default_timezone_set('Asia/Jakarta');
           echo date("Y-m-d h:i:sa"); ?>] by [<?= $this->session->userdata('username'); ?>]
-Telp. : <?= $cont->cont_telp1 ?> / <?= $cont->cont_telp2 ?>
+Telp. : <?= $cont->no_telp; ?>
 
-Fax. : <?= $cont->cont_fax ?>
+Email : <?= $cont->email; ?>
 
-Email : <?= $cont->cont_email ?>
-
-Whatsapp : <?= $cont->cont_wa ?>
-
-Social Media : <?= $cont->cont_sosmed ?>
+Whatsapp : <?= $cont->whatsapp; ?>
 
 <?php } else if ($req->specify == 'Phone/Telp.') { ?>
 Accepted [<?php date_default_timezone_set('Asia/Jakarta');
           echo date("Y-m-d h:i:sa"); ?>]
 
-Telp. : <?= $cont->cont_telp1 ?> / <?= $cont->cont_telp2 ?>
+Telp. : <?= $cont->no_telp; ?>
 
 <?php } else if ($req->specify == 'WhatsApp') { ?>
 Accepted [<?php date_default_timezone_set('Asia/Jakarta');
           echo date("Y-m-d h:i:sa"); ?>]
 
-Whatsapp : <?= $cont->cont_wa ?>
+Whatsapp : <?= $cont->whatsapp ?>
 
 <?php } else if ($req->specify == 'Social Media') { ?>
 Accepted [<?php date_default_timezone_set('Asia/Jakarta');

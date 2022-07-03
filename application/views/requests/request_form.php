@@ -105,13 +105,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Contact Name</label>
-                                    <input class="input--style-4" type="text" name="" id="" value="<?= $contacts->cont_nama; ?>" disabled>
+                                    <input class="input--style-4" type="text" name="" id="" value="<?= $contacts->fullname; ?>" disabled>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Contact As</label>
-                                    <input class="input--style-4" type="text" name="" id="" value="<?= $contacts->cont_jobdesk; ?>" disabled>
+                                    <input class="input--style-4" type="text" name="" id="" value="<?= $contacts->type; ?>" disabled>
                                 </div>
                             </div>
                         </div>

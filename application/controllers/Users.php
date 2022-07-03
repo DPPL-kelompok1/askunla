@@ -16,13 +16,10 @@ class Users extends CI_Controller
 
 	public function index()
 	{
-		$type = 'mahasiswa';
-		$data['user'] = $this->Users_model->read_type($type);
+
+		$data['user'] = $this->Users_model->read();
 		$this->load->view('users/user_list', $data);
-		
-		$dosen = 'dosen';
-		$data['user'] = $this->Users_model->read_type($dosen);
-		$this->load->view('users/user_list', $data);
+
 	}
 
 	public function add()

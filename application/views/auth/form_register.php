@@ -73,7 +73,7 @@
 					<option value="">User Type</option>
 						<option value="Mahasiswa">Mahasiswa</option>
 						<option value="Dosen">Dosen</option>
-						<option value="Tenaga Pendidikan">Tenaga Kependidikan</option>
+						<option value="Tenaga Kependidikan">Tenaga Kependidikan</option>
 					</select>
 					</div>
 					<?= form_error('type') ?>

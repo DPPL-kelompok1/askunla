@@ -30,8 +30,7 @@
   
 </head>
 <style>
-# Header
---------------------------------------------------------------*/
+
 #header {
   transition: all 0.5s;
   z-index: 997;
@@ -331,10 +330,10 @@
 		foreach ($privcont as $con) { ?>
 		  <tr>
 			<td><?= $i++ ?></td>
-			<td><?= $con->cont_nama ?></td>
-			<td><?= $con->cont_jobdesk ?></td>
-			<td><?= $con->cont_prodi ?></td>
-			<td><?= $con->cont_fakultas ?></td>
+			<td><?= $con->fullname ?></td>
+			<td><?= $con->type ?></td>
+			<td><?= $con->prodi ?></td>
+			<td><?= $con->fakultas ?></td>
 			<td>
 			  <a href="<?= site_url('requests/add/' . $con->cont_id) ?>">Request</a>
 			</td>

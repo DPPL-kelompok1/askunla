@@ -46,12 +46,12 @@ class Requests_model extends CI_Model
 	{
 		$this->db->where('req_id', $id);
 		$query = $this->db->get('request');
-		return $query->row();;
+		return $query->row();
 	}
 
 	public function readtype($type)
 	{
-		$this->db->where('cont_type', $type);
+		$this->db->where('type', $type);
 		$query = $this->db->get('contact');
 		return $query->result();
 	}

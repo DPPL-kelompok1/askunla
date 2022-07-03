@@ -45,10 +45,10 @@ class Requests extends CI_Controller
 	{
 
 		$var = $this->Requests_model->readby1($id);
-		// if ($var->sendmail == '0') {
-		// 	$this->session->set_flashdata('msg', '<p style="background-color:grey; letter-spacing: 3px; color:black; font-weight: bold; opacity:0.8; text-align:center; border-radius:20px; width:310px; padding:10px; margin: auto"> Please Send Mail First ! </p>');
-		// 	redirect('requests');
-		//} else {
+		if ($var->sendmail == '0') {
+			$this->session->set_flashdata('msg', '<p style="background-color:grey; letter-spacing: 3px; color:black; font-weight: bold; opacity:0.8; text-align:center; border-radius:20px; width:310px; padding:10px; margin: auto"> Please Send Mail First ! </p>');
+			redirect('requests');
+		} else {
 			if ($this->input->post('submit')) {
 				$this->Requests_model->responsacc($id);
 				if ($this->db->affected_rows() > 0) {
@@ -61,8 +61,9 @@ class Requests extends CI_Controller
 			$prev['cont'] = $this->Contacts_model->read_by($var->id_cont);
 			$prev['req'] = $this->Requests_model->readby1($var->req_id);
 			$this->load->view('requests/previewreq_form', $prev);
-		
+		}
 	}
+
 	public function responsdec($id)
 	{
 		$var = $this->Requests_model->readby1($id);
@@ -77,6 +78,7 @@ class Requests extends CI_Controller
 			redirect('requests');
 		}
 	}
+	
 	public function sendmailprivate($id)
 	{
 		if ($this->input->post('submit')) {
@@ -134,13 +136,17 @@ class Requests extends CI_Controller
 
 	public function cont_general()
 	{
-		$list['gencont'] = $this->Contacts_model->readtype('General');
+		$list['gencont'] = $this->Users_model->readtype('General');
 		$this->load->view('requests/generalcont_list', $list);
 	}
 
 	public function cont_privt()
 	{
-		$list['privcont'] = $this->Contacts_model->readtype('Private');
+		$list['privcont'] = $this->Contacts_model->readtype('Dosen');
+		$this->load->view('requests/privcont_list', $list);
+		$list['privcont'] = $this->Contacts_model->readtype('Mahasiswa');
+		$this->load->view('requests/privcont_list', $list);
+		$list['privcont'] = $this->Contacts_model->readtype('Tenaga Kependidikan');
 		$this->load->view('requests/privcont_list', $list);
 	}
 	public function delete($id)
