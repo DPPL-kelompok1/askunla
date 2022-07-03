@@ -347,9 +347,9 @@ input[type=text], select, textarea {
           <p>Daftar Contact Umum / Pribadi Universitas Langlangbuana.</p>
         </div>
 		<div class="add">
-			<a href="<?=site_url('contacts/add')?>">
+			<!-- <a href="<?=site_url('contacts/add')?>">
 				<i class="fas fa-plus-circle"></i>
-			ADD NEW CONTACT</a>
+			ADD NEW CONTACT</a> -->
 		
 		<form action="<?= site_url('contacts/reader') ?>" method="POST">
 			<table>
@@ -381,7 +381,7 @@ input[type=text], select, textarea {
 			<th>Telp 1</th>
 			<th>E-Mail</th>
 			<th>WhatsApp Number</th>
-			<th colspan="3">Action</th>
+			<th colspan="1">Action</th>
 		</tr>
 		<?php $i=1; foreach($contacts as $con) { ?>
 		<tr>
@@ -393,7 +393,7 @@ input[type=text], select, textarea {
 			<td><?=$con->no_telp?></td>
 			<td><?=$con->email?></td>
 			<td><?=$con->whatsapp?></td>
-			<td><a href="<?=site_url('contacts/edit/'.$con->cont_id)?>" title="EDIT"><i class="fas fa-edit" style="font-size:30px; color:green"></i></a></td>
+			<!-- <td><a href="<?=site_url('contacts/edit/'.$con->cont_id)?>" title="EDIT"><i class="fas fa-edit" style="font-size:30px; color:green"></i></a></td> -->
 			<td><a href="<?=site_url('contacts/delete/'.$con->cont_id)?>" onclick="return confirm('Are You Sure?')" title="DELETE"><i class="fas fa-minus-circle" style="font-size:30px; color:red"></i></a></td>
 		</tr>
 		<?php } ?>

@@ -30,7 +30,8 @@
   
 </head>
 <style>
-
+# Header
+--------------------------------------------------------------*/
 #header {
   transition: all 0.5s;
   z-index: 997;
@@ -203,6 +204,34 @@
 	color:white;
 }
 
+.btn {
+  display: inline-block;
+  color:#e43c5c;
+  padding: 10px 20px 10px 20px; 
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  background-color:white;
+  border: 1px solid #e43c5c; 
+  border-radius:0px 30px 30px 0px;
+}
+.btn:hover {
+	background-color:#e43c5c;
+	color:white;
+}
+
+input[type=text], select, textarea {
+	display: inline-block;
+  color:#e43c5c;
+  padding: 13px 10px 12px 10px; 
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  background-color:white;
+  border: 1px solid #e43c5c; 
+  border-radius:30px 0px 0px 30px;
+}
 </style>
 
 <body>
@@ -314,9 +343,28 @@
 		  <h3>PRIVATE CONTACT LIST  <span>Ask Unla</span></h3>
           <p>Daftar Request Private Contact Universitas Langlangbuana.</p>
         </div>
-		<?=$this->session->flashdata('msg')?>
 	</div>
     </section>
+    <div class="add">
+    <form action="<?= site_url('requests/reader') ?>" method="POST">
+			<table>
+				<td>
+					<select name="type" id="">
+						<option value="">Profession/Job</option>
+						<option value="">Show All</option>
+						<option value="Dosen">Dosen</option>
+						<option value="Mahasiswa">Mahasiswa</option>
+						<option value="Tenaga Kependidikan">Tenaga Kependidikan</option>
+					</select>
+				</td>
+				<td>
+					<input type="submit" value="Sort" name="sorting" class="btn">
+				</td>
+			</table>
+    </div>
+		</form>
+    <br>
+    <?=$this->session->flashdata('msg')?>
 	<table id="customers">
 		<tr>
 		  <th>No</th>
@@ -335,7 +383,9 @@
 			<td><?= $con->prodi ?></td>
 			<td><?= $con->fakultas ?></td>
 			<td>
+      <div class="veri">
 			  <a href="<?= site_url('requests/add/' . $con->cont_id) ?>">Request</a>
+    </div>
 			</td>
 		  </tr>
 		<?php } ?>
