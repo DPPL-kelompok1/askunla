@@ -9,7 +9,7 @@ class Requests_model extends CI_Model
 		$data = array(
 			'userid' => $this->input->post('userid'),
 			'id_cont' => $this->input->post('cont_id'),
-			'specify' => $this->input->post('contact'),
+			// 'specify' => $this->input->post('contact'),
 			'reason' => $this->input->post('reason'),
 		);
 		$this->db->insert('request', $data);
