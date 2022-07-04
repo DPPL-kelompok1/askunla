@@ -26,7 +26,10 @@ class Auth_model extends CI_Model
             'type' => $this->input->post('type'),
             'fullname' => $this->input->post('fullname'),
             'no_telp' => $this->input->post('notelp'),
-            'email' => $this->input->post('email')
+            'email' => $this->input->post('email'),
+            'fakultas' => $this->input->post('fakultas'),
+            'prodi' => $this->input->post('prodi'),
+            'whatsapp' => $this->input->post('whatsapp')
         );
         $this->db->insert('user', $data);
         $this->db->insert('contact', $data);

@@ -356,7 +356,7 @@
         <th>Tanggal Request</th>
         <th>User ID</th>
         <th>Contact ID</th>
-        <th>Contact Detail</th>
+        <!-- <th>Contact Detail</th> -->
         <th>Reason</th>
         <th>Status</th>
         <th>Result</th>
@@ -371,7 +371,7 @@
           <td><?= $req->req_tgl ?></td>
           <td><?= $req->userid  ?></td>
           <td><?= $req->id_cont ?></td>
-          <td><?= $req->specify ?></td>
+          <!-- <td><?= $req->specify ?></td> -->
           <td><?= $req->reason ?></td>
           <td><?= $req->req_status ?></td>
           <td><?= $req->req_result ?></td>

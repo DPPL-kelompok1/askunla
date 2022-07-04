@@ -115,7 +115,7 @@
                                 </div>
                             </div>
                         </div>
-                            <div class="col-6">
+                            <!-- <div class="col-6">
                                 <div class="input-group">
                                     <label class="label">Specific Contact</label>
                                     <div class="p-t-10">
@@ -139,7 +139,7 @@
                                         </label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-6">
                                 <div class="input-group">
                                     <label class="label">Requirements</label>

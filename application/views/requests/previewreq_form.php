@@ -77,39 +77,24 @@
                 <input class="input--style-4" type="text" name="contact" id="" value="ID Contact <?= $cont->cont_id ?> / Contact Name <?= $cont->fullname; ?>">
               </div>
             </div>
-            <div class="col-6">
+            <!-- <div class="col-6">
               <div class="input-group">
                 <label class="label">Specific Contact</label>
                 <input class="input--style-4" type="text" name="specific" id="" value="<?= $req->specify ?>">
               </div>
-            </div>
+            </div> -->
             <div class="col-6">
               <div class="input-group">
                 <label class="label">Message</label>
                 <textarea class="area" name="message" id="" cols="50" rows="5">
-<?php if ($req->specify == 'All Contact') { ?>
 Accepted [<?php date_default_timezone_set('Asia/Jakarta');
-          echo date("Y-m-d h:i:sa"); ?>] by [<?= $this->session->userdata('username'); ?>]
+                            echo date("Y-m-d h:i:sa"); ?>] by [<?= $this->session->userdata('username'); ?>]
 Telp. : <?= $cont->no_telp; ?>
 
 Email : <?= $cont->email; ?>
 
 Whatsapp : <?= $cont->whatsapp; ?>
-
-<?php } else if ($req->specify == 'Phone/Telp.') { ?>
-Accepted [<?php date_default_timezone_set('Asia/Jakarta');
-          echo date("Y-m-d h:i:sa"); ?>]
-
-Telp. : <?= $cont->no_telp; ?>
-
-<?php } else if ($req->specify == 'WhatsApp') { ?>
-Accepted [<?php date_default_timezone_set('Asia/Jakarta');
-          echo date("Y-m-d h:i:sa"); ?>]
-
-Whatsapp : <?= $cont->whatsapp ?>
-
-<?php } ?>
-									  </textarea>
+									</textarea>
               </div>
             </div>
             <div class="row row-space">
