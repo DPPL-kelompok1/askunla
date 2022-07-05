@@ -159,7 +159,7 @@
   #customers {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 95%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 50px;
@@ -236,16 +236,16 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <?php if ($this->session->userdata('type') == 'Administrator') { ?>
-		  <li class="active"><a href="<?= site_url('requests') ?>">Manage Request</a></li>
-            <li style="font-weight: 700"><a href="<?= base_url() ?>">HOME</a></li>
-			<li><a href="<?= site_url('contacts') ?>">Manage Contact</a></li>
+          <li class="active"><a href="<?= site_url('requests') ?>">Manage Request</a></li>
+            <!-- <li><a href="<?= site_url('contacts') ?>">Manage Contact</a></li> -->
             <li><a href="<?= site_url('users') ?>">Manage Users</a></li>
+            <li style="font-weight: 700"><a href="<?= base_url() ?>">HOME</a></li>
             <li style="font-weight: 700"><a href="<?= site_url('auth/logout') ?>" onclick="return confirm('Are You Sure?')">LOGOUT</a></li>
           <?php } else { ?>
             <li class="active"><a href="<?= site_url('requests/history/' . $id) ?>">History Request Contact</a></li>
-            <li style="font-weight: 700"><a href="<?= base_url() ?>">HOME</a></li>
-            <li><a href="<?= site_url('requests/cont_general') ?>">General Contact List</a></li>
+            <!-- <li><a href="<?= site_url('requests/cont_general') ?>">General Contact List</a></li> -->
             <li><a href="<?= site_url('requests/cont_privt') ?>">Request Private Contact</a></li>
+            <li style="font-weight: 700"><a href="<?= base_url() ?>">HOME</a></li>
             <li style="font-weight: 700"><a href="<?= site_url('auth/logout') ?>" onclick="return confirm('Are You Sure?')">LOGOUT</a></li>
           <?php } ?>
 

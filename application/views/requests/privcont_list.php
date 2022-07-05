@@ -149,7 +149,7 @@
 #customers {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 80%; 
+  width: 100%; 
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
@@ -248,9 +248,9 @@ input[type=text], select, textarea {
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="<?= site_url('requests/cont_privt') ?>">Request Private Contact</a></li>
-		  <li style="font-weight: 700"><a href="<?=base_url()?>">HOME</a></li>
 			<li><a href="<?= site_url('requests/history/'. $id) ?>">History Request Contact</a></li>
-			<li><a href="<?= site_url('requests/cont_general') ?>">General Contact List</a></li>
+			<!-- <li><a href="<?= site_url('requests/cont_general') ?>">General Contact List</a></li> -->
+      <li style="font-weight: 700"><a href="<?=base_url()?>">HOME</a></li>
 			<li style="font-weight: 700"><a href="<?= site_url('auth/logout') ?>" onclick="return confirm('Are You Sure?')">LOGOUT</a></li>
 			
 			<!--
@@ -348,12 +348,24 @@ input[type=text], select, textarea {
     <form action="<?= site_url('requests/reader') ?>" method="POST">
 			<table>
 				<td>
-					<select name="type" id="">
-						<option value="">Profession/Job</option>
-						<option value="">Show All</option>
-						<option value="Dosen">Dosen</option>
-						<option value="Mahasiswa">Mahasiswa</option>
-						<option value="Tenaga Kependidikan">Tenaga Kependidikan</option>
+					<select name="prodi" id="">
+						<option value="" >All Prodi</option>
+						<option value="Ilmu Hukum S1">Ilmu Hukum S1</option>
+						<option value="Manajemen S1">Manajemen S1</option>
+						<option value="Akuntansi S1">Akuntansi S1</option>
+						<option value="Ilmu Pemerintahan S1">Ilmu Pemerintahan S1</option>
+						<option value="Ilmu Kesejahteraan S1">Ilmu Kesejahteraan S1</option>
+						<option value="Ilmu Komunikasi S1">Ilmu Komunikasi S1</option>
+						<option value="Kepolisian D3">Kepolisian D3</option>
+						<option value="Pend. Ekonomi/Akuntansi S1">Ilmu Komunikasi S1</option>
+						<option value="Pend. Matematika S1">Pend. Matematika S1</option>
+						<option value="PGSD S1">PGSD S1</option>
+						<option value="Teknik Industri S1">Teknik Industri S1</option>
+						<option value="Teknik Sipil S1">Teknik Sipil S1</option>
+						<option value="Arsitektur S1">Arsitektur S1</option>
+						<option value="Teknik Elektro S1">Teknik Elektro S1</option>
+						<option value="Teknik Informatika S1">Teknik Informatika S1</option>
+						<option value="Pascasarjana">Pascasarjana</option>
 					</select>
 				</td>
 				<td>
@@ -369,8 +381,8 @@ input[type=text], select, textarea {
 		  <th>No</th>
 		  <th>Private Contact Name</th>
 		  <th>Profession/Job</th>
-		  <th>Prodi</th>
 		  <th>Faculty</th>
+      <th>Prodi</th>
 		  <th>Request</th>
 		</tr>
 		<?php $i = 1;
@@ -379,8 +391,8 @@ input[type=text], select, textarea {
 			<td><?= $i++ ?></td>
 			<td><?= $con->fullname ?></td>
 			<td><?= $con->type ?></td>
+      <td><?= $con->fakultas ?></td>
 			<td><?= $con->prodi ?></td>
-			<td><?= $con->fakultas ?></td>
 			<td>
       <div class="veri">
 			  <a href="<?= site_url('requests/add/' . $con->cont_id) ?>">Request</a>

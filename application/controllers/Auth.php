@@ -52,7 +52,7 @@ class Auth extends CI_Controller
         if ($this->input->post('login') && $this->validation('login')) {
             $login = $this->Auth_model->getuser($this->input->post('username'));
             if ($login != NULL) {
-                if (password_verify($this->input->post('password'), $login->password) && $login->verifikasi == '1') {
+                 if (password_verify($this->input->post('password'), $login->password) && $login->verifikasi == '1') {
                     $data = array(
                         'userid' => $login->userid,
                         'username' => $login->username,
@@ -64,7 +64,7 @@ class Auth extends CI_Controller
                     $this->session->set_userdata($data);
                     $this->session->set_flashdata('msg', '<br><p style="background-color:grey; letter-spacing: 3px; color:black; font-weight: bold; opacity:0.8; text-align:center; border-radius:20px; width:auto; padding:10px; margin: auto">You are login !</p>');
                     redirect('welcome');
-                } else if (password_verify($this->input->post('password'), $login->password) && $login->verifikasi != '1') {
+                } elseif (password_verify($this->input->post('password'), $login->password) && $login->verifikasi != '1') {
                     $this->session->set_flashdata('msg', '<br><p style="background-color:black; letter-spacing: 3px; color:red; font-weight: bold; opacity:0.8; text-align:center; border-radius:20px; width:auto; padding:10px; margin: auto">Your Account not Verified !</p>');
                     redirect('welcome');
                 }

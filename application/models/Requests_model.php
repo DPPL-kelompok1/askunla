@@ -56,13 +56,13 @@ class Requests_model extends CI_Model
 		return $query->result();
 	}
 
-	public function readtype1($type)
+	public function readtype1($prodi)
 	{
-		if ($type == '') {
+		if ($prodi == '') {
 			$query = $this->db->get('contact');
 			return $query->result();
 		} else {
-			$this->db->where('type', $type);
+			$this->db->where('prodi', $prodi);
 			$query = $this->db->get('contact');
 			return $query->result();
 		}

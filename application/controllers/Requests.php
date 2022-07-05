@@ -149,7 +149,7 @@ class Requests extends CI_Controller
 	public function reader()
 	{
 		if ($this->input->post('sorting')) {
-			$data['privcont'] = $this->Requests_model->readtype1($this->input->post('type'));
+			$data['privcont'] = $this->Requests_model->readtype1($this->input->post('prodi', 'type'));
 			$this->load->view('requests/privcont_list', $data);
 		}
 	}
