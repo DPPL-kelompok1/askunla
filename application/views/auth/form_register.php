@@ -101,7 +101,7 @@
 							<i class="fa fa-building" aria-hidden="true"></i>
 						</span>
 					<select class="input100" type="text" name="prodi" placeholder="Prodi">
-					<option value="">Prodi</option>
+						<option value="">Prodi</option>
 						<option value="Ilmu Hukum S1">Ilmu Hukum S1</option>
 						<option value="Manajemen S1">Manajemen S1</option>
 						<option value="Akuntansi S1">Akuntansi S1</option>

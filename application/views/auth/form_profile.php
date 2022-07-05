@@ -183,13 +183,13 @@
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">Prodi</label>
-                                        <input class="input--style-4" type="prodi" name="prodi" value="<?= set_value('prodi', $prodi) ?>" required>
+                                        <input class="input--style-4" type="prodi" name="prodi" value="<?= set_value('prodi', $prodi) ?>" disabled>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">Fakultas</label>
-                                        <input class="input--style-4" type="text" name="fakultas" value="<?= set_value('fakultas', $fakultas) ?>" required">
+                                        <input class="input--style-4" type="text" name="fakultas" value="<?= set_value('fakultas', $fakultas) ?>" disabled>
                                     </div>
                                 </div>
                             </div>
