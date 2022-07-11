@@ -212,8 +212,8 @@
               <a href="<?= site_url('requests/cont_privt') ?>">
                 <div class="icon-box">
                   <div class="icon"><i class="fas fa-phone-square"></i></div>
-                  <h4 class="title">Request Private Contact</h4>
-                  <p class="description">Request Contact Dosen / Umum Ask Unla</p>
+                  <h4 class="title">Request All Contact</h4>
+                  <p class="description">Request All Contact Ask Unla</p>
                 </div>
               </a>
             </div>

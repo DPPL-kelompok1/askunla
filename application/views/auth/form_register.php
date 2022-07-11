@@ -78,7 +78,7 @@
 					</div>
 					<?= form_error('type') ?>
 
-					<div class="wrap-input100 validate-input" data-validate="Valid type is required: Mahasiswa, Dosen, Tenaga Kependidikan">
+					<div class="wrap-input100">
 					<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-university" aria-hidden="true"></i>
@@ -95,7 +95,7 @@
 					</div>
 					<?= form_error('fakultas') ?>
 
-					<div class="wrap-input100 validate-input" data-validate="Valid type is required: Mahasiswa, Dosen, Tenaga Kependidikan">
+					<div class="wrap-input100">
 					<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-building" aria-hidden="true"></i>

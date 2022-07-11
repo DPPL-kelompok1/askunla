@@ -67,6 +67,17 @@ class Requests_model extends CI_Model
 			return $query->result();
 		}
 	}
+	public function readtype2($type)
+	{
+		if ($type == '') {
+			$query = $this->db->get('contact');
+			return $query->result();
+		} else {
+			$this->db->where('type', $type);
+			$query = $this->db->get('contact');
+			return $query->result();
+		}
+	}
 
 	public function sendmail($id)
 	{

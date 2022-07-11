@@ -372,6 +372,21 @@ input[type=text], select, textarea {
 					<input type="submit" value="Sort" name="sorting" class="btn">
 				</td>
 			</table>
+		</form>
+    <form action="<?= site_url('requests/reader1') ?>" method="POST">
+			<table>
+				<td>
+					<select name="type" id="">
+						<option value="" >All Type</option>
+						<option value="Dosen">Dosen</option>
+						<option value="Mahasiswa">Mahasiswa</option>
+						<option value="Tenaga Kependidikan">Tenaga Kependidikan</option>
+					</select>
+				</td>
+				<td>
+					<input type="submit" value="Sort" name="sorting" class="btn">
+				</td>
+			</table>
     </div>
 		</form>
     <br>
