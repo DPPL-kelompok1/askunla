@@ -7,17 +7,19 @@ class Contacts_model extends CI_Model
 	public function create()
 	{
 		$data = array(
-			'cont_nama' => $this->input->post('cont_nama'),
-			'cont_type' => $this->input->post('cont_type'),
-			'cont_jobdesk' => $this->input->post('cont_jobdesk'),
-			'cont_prodi' => $this->input->post('cont_prodi'),
-			'cont_fakultas' => $this->input->post('cont_fakultas'),
-			'cont_telp1' => $this->input->post('cont_telp1'),
-			'cont_telp2' => $this->input->post('cont_telp2'),
-			'cont_fax' => $this->input->post('cont_fax'),
-			'cont_email' => $this->input->post('cont_email'),
-			'cont_wa' => $this->input->post('cont_wa'),
-			'cont_sosmed' => $this->input->post('cont_sosmed')
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password'),
+			'type' => $this->input->post('type'),
+			'fullname' => $this->input->post('fullname'),
+			'no_identitas' => $this->input->post('no_identitas'),
+			'alamat' => $this->input->post('alamat'),
+			'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+			'tmpt_tgl_lahir' => $this->input->post('tmpt_tgl_lahir'),
+			'no_telp' => $this->input->post('no_telp'),
+			'email' => $this->input->post('email'),
+			'prodi' => $this->input->post('prodi'),
+            'fakultas' => $this->input->post('fakultas'),
+            'whatsapp' => $this->input->post('whatsapp')
 		);
 		$this->db->insert('contact', $data);
 	}
@@ -33,7 +35,7 @@ class Contacts_model extends CI_Model
 			$query = $this->db->get('contact');
 			return $query->result();
 		} else {
-			$this->db->where('cont_type', $type);
+			$this->db->where('type', $type);
 			$query = $this->db->get('contact');
 			return $query->result();
 		}
@@ -48,17 +50,19 @@ class Contacts_model extends CI_Model
 	public function update($id)
 	{
 		$data = array(
-			'cont_nama' => $this->input->post('cont_nama'),
-			'cont_type' => $this->input->post('cont_type'),
-			'cont_jobdesk' => $this->input->post('cont_jobdesk'),
-			'cont_prodi' => $this->input->post('cont_prodi'),
-			'cont_fakultas' => $this->input->post('cont_fakultas'),
-			'cont_telp1' => $this->input->post('cont_telp1'),
-			'cont_telp2' => $this->input->post('cont_telp2'),
-			'cont_fax' => $this->input->post('cont_fax'),
-			'cont_email' => $this->input->post('cont_email'),
-			'cont_wa' => $this->input->post('cont_wa'),
-			'cont_sosmed' => $this->input->post('cont_sosmed')
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password'),
+			'type' => $this->input->post('type'),
+			'fullname' => $this->input->post('fullname'),
+			'no_identitas' => $this->input->post('no_identitas'),
+			'alamat' => $this->input->post('alamat'),
+			'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+			'tmpt_tgl_lahir' => $this->input->post('tmpt_tgl_lahir'),
+			'no_telp' => $this->input->post('no_telp'),
+			'email' => $this->input->post('email'),
+			'prodi' => $this->input->post('prodi'),
+            'fakultas' => $this->input->post('fakultas'),
+            'whatsapp' => $this->input->post('whatsapp')
 		);
 		$this->db->where('cont_id', $id);
 		$this->db->update('contact', $data);

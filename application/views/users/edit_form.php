@@ -149,14 +149,21 @@
                                     <textarea class="area"  name="alamat" cols="54" rows="4"><?= set_value('alamat', $alamat) ?></textarea>
                                </div>
                             </div>
-                        
-						<div class="col-6">
+
+                        <div class="row row-space">
+                            <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Email</label>
                                     <input class="input--style-4" type="email" name="email" value="<?= set_value('email', $email) ?>" required>
-                               </div>
+                                </div>
                             </div>
-						
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">WhatsApp</label>
+                                    <input class="input--style-4" type="text" name="whatsapp" value="<?= set_value('whatsapp', $whatsapp) ?>" required">
+                                </div>
+                            </div>
+                        </div>
 <!--						
                         <div class="input-group">
                             <label class="label">Subject</label>

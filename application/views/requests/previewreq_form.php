@@ -74,51 +74,27 @@
             <div class="col-6">
               <div class="input-group">
                 <label class="label">Request Contact</label>
-                <input class="input--style-4" type="text" name="contact" id="" value="ID Contact <?= $cont->cont_id ?> / Contact Name <?= $cont->cont_nama ?>">
+                <input class="input--style-4" type="text" name="contact" id="" value="ID Contact <?= $cont->cont_id ?> / Contact Name <?= $cont->fullname; ?>">
               </div>
             </div>
-            <div class="col-6">
+            <!-- <div class="col-6">
               <div class="input-group">
                 <label class="label">Specific Contact</label>
                 <input class="input--style-4" type="text" name="specific" id="" value="<?= $req->specify ?>">
               </div>
-            </div>
+            </div> -->
             <div class="col-6">
               <div class="input-group">
                 <label class="label">Message</label>
                 <textarea class="area" name="message" id="" cols="50" rows="5">
-<?php if ($req->specify == 'All Contact') { ?>
 Accepted [<?php date_default_timezone_set('Asia/Jakarta');
-          echo date("Y-m-d h:i:sa"); ?>] by [<?= $this->session->userdata('username'); ?>]
-Telp. : <?= $cont->cont_telp1 ?> / <?= $cont->cont_telp2 ?>
+                            echo date("Y-m-d h:i:sa"); ?>] by [<?= $this->session->userdata('username'); ?>]
+Telp. : <?= $cont->no_telp; ?>
 
-Fax. : <?= $cont->cont_fax ?>
+Email : <?= $cont->email; ?>
 
-Email : <?= $cont->cont_email ?>
-
-Whatsapp : <?= $cont->cont_wa ?>
-
-Social Media : <?= $cont->cont_sosmed ?>
-
-<?php } else if ($req->specify == 'Phone/Telp.') { ?>
-Accepted [<?php date_default_timezone_set('Asia/Jakarta');
-          echo date("Y-m-d h:i:sa"); ?>]
-
-Telp. : <?= $cont->cont_telp1 ?> / <?= $cont->cont_telp2 ?>
-
-<?php } else if ($req->specify == 'WhatsApp') { ?>
-Accepted [<?php date_default_timezone_set('Asia/Jakarta');
-          echo date("Y-m-d h:i:sa"); ?>]
-
-Whatsapp : <?= $cont->cont_wa ?>
-
-<?php } else if ($req->specify == 'Social Media') { ?>
-Accepted [<?php date_default_timezone_set('Asia/Jakarta');
-          echo date("Y-m-d h:i:sa"); ?>]
-
-Social Media : <?= $cont->cont_sosmed ?>
-<?php } ?>
-									  </textarea>
+Whatsapp : <?= $cont->whatsapp; ?>
+									</textarea>
               </div>
             </div>
             <div class="row row-space">

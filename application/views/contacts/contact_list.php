@@ -30,8 +30,8 @@
   
 </head>
 <style>
-# Header
---------------------------------------------------------------*/
+/* # Header */
+
  #header {
     transition: all 0.5s;
     z-index: 997;
@@ -347,9 +347,9 @@ input[type=text], select, textarea {
           <p>Daftar Contact Umum / Pribadi Universitas Langlangbuana.</p>
         </div>
 		<div class="add">
-			<a href="<?=site_url('contacts/add')?>">
+			<!-- <a href="<?=site_url('contacts/add')?>">
 				<i class="fas fa-plus-circle"></i>
-			ADD NEW CONTACT</a>
+			ADD NEW CONTACT</a> -->
 		
 		<form action="<?= site_url('contacts/reader') ?>" method="POST">
 			<table>
@@ -357,8 +357,9 @@ input[type=text], select, textarea {
 					<select name="type" id="">
 						<option value="">Select Type</option>
 						<option value="">Show All</option>
-						<option value="General">General</option>
-						<option value="Private">Private</option>
+						<option value="Dosen">Dosen</option>
+						<option value="Mahasiswa">Mahasiswa</option>
+						<option value="Tenaga Kependidikan">Tenaga Kependidikan</option>
 					</select>
 				</td>
 				<td>
@@ -375,31 +376,23 @@ input[type=text], select, textarea {
 			<th>No</th>
 			<th>Name</th>
 			<th>Contact Type</th>
-			<th>Jobdesk</th>
 			<th>Prodi</th>
 			<th>Fakultas</th>
-			<th>Telp 1</th>
-			<th>Telp 2</th>
-			<th>Fax</th>
+			<th>Telp</th>
 			<th>E-Mail</th>
 			<th>WhatsApp Number</th>
-			<th>Social Media</th>
-			<th colspan="3">Action</th>
+			<th colspan="2">Action</th>
 		</tr>
 		<?php $i=1; foreach($contacts as $con) { ?>
 		<tr>
 			<td><?=$i++?></td>
-			<td><?=$con->cont_nama?></td>
-			<td><?=$con->cont_type?></td>
-			<td><?=$con->cont_jobdesk?></td>
-			<td><?=$con->cont_prodi?></td>
-			<td><?=$con->cont_fakultas?></td>
-			<td><?=$con->cont_telp1?></td>
-			<td><?=$con->cont_telp2?></td>
-			<td><?=$con->cont_fax?></td>
-			<td><?=$con->cont_email?></td>
-			<td><?=$con->cont_wa?></td>
-			<td><?=$con->cont_sosmed?></td>
+			<td><?=$con->fullname?></td>
+			<td><?=$con->type?></td>
+			<td><?=$con->prodi?></td>
+			<td><?=$con->fakultas?></td>
+			<td><?=$con->no_telp?></td>
+			<td><?=$con->email?></td>
+			<td><?=$con->whatsapp?></td>
 			<td><a href="<?=site_url('contacts/edit/'.$con->cont_id)?>" title="EDIT"><i class="fas fa-edit" style="font-size:30px; color:green"></i></a></td>
 			<td><a href="<?=site_url('contacts/delete/'.$con->cont_id)?>" onclick="return confirm('Are You Sure?')" title="DELETE"><i class="fas fa-minus-circle" style="font-size:30px; color:red"></i></a></td>
 		</tr>

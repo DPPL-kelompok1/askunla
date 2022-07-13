@@ -30,8 +30,7 @@
   
 </head>
 <style>
-# Header
---------------------------------------------------------------*/
+
 #header {
   transition: all 0.5s;
   z-index: 997;
@@ -150,7 +149,7 @@
 #customers {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 80%; 
+  width: 100%; 
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
@@ -204,6 +203,34 @@
 	color:white;
 }
 
+.btn {
+  display: inline-block;
+  color:#e43c5c;
+  padding: 10px 20px 10px 20px; 
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  background-color:white;
+  border: 1px solid #e43c5c; 
+  border-radius:0px 30px 30px 0px;
+}
+.btn:hover {
+	background-color:#e43c5c;
+	color:white;
+}
+
+input[type=text], select, textarea {
+	display: inline-block;
+  color:#e43c5c;
+  padding: 13px 10px 12px 10px; 
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  background-color:white;
+  border: 1px solid #e43c5c; 
+  border-radius:30px 0px 0px 30px;
+}
 </style>
 
 <body>
@@ -221,9 +248,9 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="<?= site_url('requests/cont_privt') ?>">Request Private Contact</a></li>
-		  <li style="font-weight: 700"><a href="<?=base_url()?>">HOME</a></li>
 			<li><a href="<?= site_url('requests/history/'. $id) ?>">History Request Contact</a></li>
-			<li><a href="<?= site_url('requests/cont_general') ?>">General Contact List</a></li>
+			<!-- <li><a href="<?= site_url('requests/cont_general') ?>">General Contact List</a></li> -->
+      <li style="font-weight: 700"><a href="<?=base_url()?>">HOME</a></li>
 			<li style="font-weight: 700"><a href="<?= site_url('auth/logout') ?>" onclick="return confirm('Are You Sure?')">LOGOUT</a></li>
 			
 			<!--
@@ -315,28 +342,76 @@
 		  <h3>PRIVATE CONTACT LIST  <span>Ask Unla</span></h3>
           <p>Daftar Request Private Contact Universitas Langlangbuana.</p>
         </div>
-		<?=$this->session->flashdata('msg')?>
 	</div>
     </section>
+    <div class="add">
+    <form action="<?= site_url('requests/reader') ?>" method="POST">
+			<table>
+				<td>
+					<select name="prodi" id="">
+						<option value="" >All Prodi</option>
+						<option value="Ilmu Hukum S1">Ilmu Hukum S1</option>
+						<option value="Manajemen S1">Manajemen S1</option>
+						<option value="Akuntansi S1">Akuntansi S1</option>
+						<option value="Ilmu Pemerintahan S1">Ilmu Pemerintahan S1</option>
+						<option value="Ilmu Kesejahteraan S1">Ilmu Kesejahteraan S1</option>
+						<option value="Ilmu Komunikasi S1">Ilmu Komunikasi S1</option>
+						<option value="Kepolisian D3">Kepolisian D3</option>
+						<option value="Pend. Ekonomi/Akuntansi S1">Ilmu Komunikasi S1</option>
+						<option value="Pend. Matematika S1">Pend. Matematika S1</option>
+						<option value="PGSD S1">PGSD S1</option>
+						<option value="Teknik Industri S1">Teknik Industri S1</option>
+						<option value="Teknik Sipil S1">Teknik Sipil S1</option>
+						<option value="Arsitektur S1">Arsitektur S1</option>
+						<option value="Teknik Elektro S1">Teknik Elektro S1</option>
+						<option value="Teknik Informatika S1">Teknik Informatika S1</option>
+						<option value="Pascasarjana">Pascasarjana</option>
+					</select>
+				</td>
+				<td>
+					<input type="submit" value="Sort" name="sorting" class="btn">
+				</td>
+			</table>
+		</form>
+    <form action="<?= site_url('requests/reader1') ?>" method="POST">
+			<table>
+				<td>
+					<select name="type" id="">
+						<option value="" >All Type</option>
+						<option value="Dosen">Dosen</option>
+						<option value="Mahasiswa">Mahasiswa</option>
+						<option value="Tenaga Kependidikan">Tenaga Kependidikan</option>
+					</select>
+				</td>
+				<td>
+					<input type="submit" value="Sort" name="sorting" class="btn">
+				</td>
+			</table>
+    </div>
+		</form>
+    <br>
+    <?=$this->session->flashdata('msg')?>
 	<table id="customers">
 		<tr>
 		  <th>No</th>
 		  <th>Private Contact Name</th>
 		  <th>Profession/Job</th>
-		  <th>Prodi</th>
 		  <th>Faculty</th>
+      <th>Prodi</th>
 		  <th>Request</th>
 		</tr>
 		<?php $i = 1;
 		foreach ($privcont as $con) { ?>
 		  <tr>
 			<td><?= $i++ ?></td>
-			<td><?= $con->cont_nama ?></td>
-			<td><?= $con->cont_jobdesk ?></td>
-			<td><?= $con->cont_prodi ?></td>
-			<td><?= $con->cont_fakultas ?></td>
+			<td><?= $con->fullname ?></td>
+			<td><?= $con->type ?></td>
+      <td><?= $con->fakultas ?></td>
+			<td><?= $con->prodi ?></td>
 			<td>
+      <div class="veri">
 			  <a href="<?= site_url('requests/add/' . $con->cont_id) ?>">Request</a>
+    </div>
 			</td>
 		  </tr>
 		<?php } ?>

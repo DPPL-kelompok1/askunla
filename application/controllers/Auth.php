@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+require 'vendor/autoload.php';
+use \Mailjet\Resources;
+
+
 class Auth extends CI_Controller
 {
     public function __construct()
@@ -48,20 +52,19 @@ class Auth extends CI_Controller
         if ($this->input->post('login') && $this->validation('login')) {
             $login = $this->Auth_model->getuser($this->input->post('username'));
             if ($login != NULL) {
-                if (password_verify($this->input->post('password'), $login->password)  && $login->verifikasi == '1') {
+                 if (password_verify($this->input->post('password'), $login->password) && $login->verifikasi == '1') {
                     $data = array(
                         'userid' => $login->userid,
                         'username' => $login->username,
                         'fullname' => $login->fullname,
                         'type' => $login->type,
-                        'userid' => $login->userid,
                         'identity' => $login->no_identitas,
                         'photo' => $login->photo
                     );
                     $this->session->set_userdata($data);
                     $this->session->set_flashdata('msg', '<br><p style="background-color:grey; letter-spacing: 3px; color:black; font-weight: bold; opacity:0.8; text-align:center; border-radius:20px; width:auto; padding:10px; margin: auto">You are login !</p>');
                     redirect('welcome');
-                } else if (password_verify($this->input->post('password'), $login->password) && $login->verifikasi != '1') {
+                } elseif (password_verify($this->input->post('password'), $login->password) && $login->verifikasi != '1') {
                     $this->session->set_flashdata('msg', '<br><p style="background-color:black; letter-spacing: 3px; color:red; font-weight: bold; opacity:0.8; text-align:center; border-radius:20px; width:auto; padding:10px; margin: auto">Your Account not Verified !</p>');
                     redirect('welcome');
                 }
@@ -70,7 +73,6 @@ class Auth extends CI_Controller
         }
         $this->load->view('auth/form_login');
     }
-
     public function validation($username)
     {
         $this->load->library('form_validation');
@@ -123,14 +125,14 @@ class Auth extends CI_Controller
                 // echo 'Input username dan email yang benar';
             }
 
-            // $this->Auth_model->val_res();
+            // $this->Auth_model->val_reg();
             // echo 'test';
             // $usercheck = $this->Auth_model->getuser($this->input->post('username'));
-            // if ($this->val_res()) {
-            //     // $this->Auth_model->forgotpass($this->input->post('username'));
-            //     // $this->sendmail($usercheck->userid);
-            //     // $this->Auth_model->encrypt($usercheck->userid);
-            //     // $this->session->set_flashdata('msg', '<p style="color:green">Reset password successfully, Check your email</p>');
+            // if ($this->val_reg()) {
+            //     $this->Auth_model->forgotpass($this->input->post('username'));
+            //     $this->sendmail($usercheck->userid);
+            //     $this->Auth_model->encrypt($usercheck->userid);
+            //     $this->session->set_flashdata('msg', '<p style="color:green">Reset password successfully, Check your email</p>');
             //     echo "test";
 
             //     redirect('auth/login');
@@ -167,48 +169,77 @@ class Auth extends CI_Controller
 
     public function sendmail($id)
     {
-        $this->load->model('Users_model');
-        $var = $this->Users_model->read_by($id);
         // Konfigurasi email
-        $config = [
-			'mailtype'  => 'html',
-			'charset'   => 'utf-8',
-			'protocol'  => 'smtp',
-			'smtp_host' => 'smtp.googlemail.com',
-			'smtp_user' => 'pwftubes21@gmail.com',  // Email gmail
-			'smtp_pass'   => 'PWFTubes2021',  // Password gmail
-			'smtp_crypto' => 'ssl',
-			'smtp_port'   => 465,
-			'newline' => "\r\n"
+		$this->load->model('Users_model');
+        $var = $this->Users_model->read_by($id);
+
+		$mj = new \Mailjet\Client('eeff72d050b4d364080d6a1b4b4dda20','0fdd4209c29a0915863eb2f9efb8ee9b',true,['version' => 'v3.1']);
+		$body = [
+		'Messages' => [
+			[
+			'From' => [
+				'Email' => "pwftubes21@gmail.com",
+				'Name' => "ASKUNLA"
+			],
+			'To' => [
+				[
+				'Email' => $var->email,
+				'Name' => $var->username
+				]
+			],
+            'Subject' => "Reset Password",
+            'TextPart' => "My first Mailjet email",
+            'HTMLPart' => "Dear $var->fullname,<br>This is your new password : $var->password<br> Do not tell anyone your password, for the security of your account.<br>Thank You.",
+            'CustomID' => "AppGettingStartedTest"
+			]
+		]
 		];
+		$response = $mj->post(Resources::$Email, ['body' => $body]);
+		$response->success() && var_dump($response->getData());
 
-		$this->email->initialize($config);
-		// Load library email dan konfigurasinya
-		$this->load->library('email', $config);
+        // $this->load->model('Users_model');
+        // $var = $this->Users_model->read_by($id);
+        // // Konfigurasi email
+        // $config = [
+		// 	'mailtype'  => 'html',
+		// 	'charset'   => 'utf-8',
+		// 	'protocol'  => 'smtp',
+		// 	'smtp_host' => 'smtp.googlemail.com',
+		// 	'smtp_user' => 'pwftubes21@gmail.com',  // Email gmail
+		// 	'smtp_pass'   => 'PWFTubes2021',  // Password gmail
+		// 	'smtp_crypto' => 'ssl',
+		// 	'smtp_port'   => 465,
+		// 	'newline' => "\r\n"
+		// ];
 
-		// Email dan nama pengirim
-		$this->email->from('pwftubes21@gmail.com', 'Askunla.com');
+		// $this->email->initialize($config);
+		// // Load library email dan konfigurasinya
+		// $this->load->library('email', $config);
 
-        // Email penerima
-        $this->email->to($var->email); // Ganti dengan email tujuan
+		// // Email dan nama pengirim
+		// $this->email->from('pwftubes21@gmail.com', 'Askunla.com');
 
-        // Lampiran email, isi dengan url/path file
-        //$this->email->attach('https://masrud.com/content/images/20181215150137-codeigniter-smtp-gmail.png');
+        // // Email penerima
+        // $this->email->to($var->email); // Ganti dengan email tujuan
 
-        // Subject email
-        $this->email->subject("Reset Password");
+        // // Lampiran email, isi dengan url/path file
+        // //$this->email->attach('https://masrud.com/content/images/20181215150137-codeigniter-smtp-gmail.png');
+
+        // // Subject email
+        // $this->email->subject("Reset Password");
 
         // Isi email
-        $this->email->message("Dear $var->fullname,<br>This is your new password : $var->password<br> Do not tell anyone your password, for the security of your account.<br>Thank You.");
+        //$this->email->message("Dear $var->fullname,<br>This is your new password : $var->password<br> Do not tell anyone your password, for the security of your account.<br>Thank You.");
 
-        // Tampilkan pesan sukses atau error
-        if ($this->email->send()) {
-            echo $this->email->send();
-        } else {
-            echo $this->email->print_debugger();
-            die;
-        }
+        // // Tampilkan pesan sukses atau error
+        // if ($this->email->send()) {
+        //     echo $this->email->send();
+        // } else {
+        //     echo $this->email->print_debugger();
+        //     die;
+        // }
     }
+
     public function changepass()
     {
         if (!$this->session->userdata('username')) redirect('auth/login'); //filter login

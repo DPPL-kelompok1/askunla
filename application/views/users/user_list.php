@@ -156,7 +156,7 @@
   #customers {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 1320px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 50px;
@@ -232,9 +232,9 @@
         <ul>
 
           <li class="active"><a href="<?= site_url('users') ?>">Manage Users</a></li>
-          <li style="font-weight: 700"><a href="<?= base_url() ?>">HOME</a></li>
           <li><a href="<?= site_url('requests') ?>">Manage Request</a></li>
-          <li><a href="<?= site_url('contacts') ?>">Manage Contact</a></li>
+          <!-- <li><a href="<?= site_url('contacts') ?>">Manage Contact</a></li> -->
+          <li style="font-weight: 700"><a href="<?= base_url() ?>">HOME</a></li>
           <li style="font-weight: 700"><a href="<?= site_url('auth/logout') ?>" onclick="return confirm('Are You Sure?')">LOGOUT</a></li>
           <!--
 		 <li><a href="#portfolio">Portfolio</a></li>
@@ -345,7 +345,7 @@
         <th>TTL</th>
         <th>No. Telp</th>
         <th>Email</th>
-        <th colspan="2">Action</th>
+        <th colspan="3">Action</th>
       </tr>
       <?php $i = 1;
       foreach ($user as $usr) { ?>
@@ -360,7 +360,7 @@
           <td style="font-size:12px;"><?= $usr->tmpt_tgl_lahir ?></td>
           <td><?= $usr->no_telp ?></td>
           <td style="font-size:14px;"><?= $usr->email ?></td>
-          <!--<td><a href="<?= site_url('users/edit/' . $usr->userid) ?>" title="EDIT"><i class="fas fa-edit" style="font-size:30px; color:green;"></i></a></td> -->
+          <td><a href="<?= site_url('users/edit/' . $usr->userid) ?>" title="EDIT"><i class="fas fa-edit" style="font-size:30px; color:green;"></i></a></td>
           <td><a href="<?= site_url('users/delete/' . $usr->userid) ?>" onclick="return confirm('Are you sure?')" title="DELETE"><i class="fas fa-minus-circle" style="font-size:30px; color:red;"></i></a></td>
           <td>
             <?php if ($usr->verifikasi == '1') echo 'Verified';

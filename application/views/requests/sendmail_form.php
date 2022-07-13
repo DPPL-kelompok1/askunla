@@ -72,7 +72,7 @@
 						<div class="col-6">
                                 <div class="input-group">
                                     <label class="label">Email</label>
-                                    <input class="input--style-4" type="text" name="address" id="" value="<?= $cont->cont_email ?>" required>
+                                    <input class="input--style-4" type="text" name="address" id="" value="<?= $cont->email ?>" required>
                                </div>
                         </div>
 						<div class="col-6">

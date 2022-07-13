@@ -11,7 +11,7 @@
 	<meta name="keywords" content="Colorlib Templates">
 
 	<!-- Title Page-->
-	<title>ASK UNLA | EDIT PROFILE</title>
+	<title>ASK UNLA | EDIT PROFILE DEVELOPMENT nnnnnnnn</title>
 
 	<!-- Icons font CSS-->
 	<link href="<?php echo base_url('assets/newform/vendor/mdi-font/css/material-design-iconic-font.min.css') ?>" rel="stylesheet" media="all">
@@ -73,30 +73,22 @@
 
 <body>
 	<?php
-	$name = '';
+	$fullname = '';
 	$type = '';
-	$jobdesk = '';
 	$prodi = '';
 	$fakultas = '';
-	$telp1 = '';
-	$telp2 = '';
-	$fax = '';
+	$no_telp = '';
 	$email = '';
-	$wa = '';
-	$sosmed = '';
+	$whatsapp = '';
 
 	if (isset($contact)) {
-		$name = $contact->cont_nama;
-		$type = $contact->cont_type;
-		$jobdesk = $contact->cont_jobdesk;
-		$prodi = $contact->cont_prodi;
-		$fakultas = $contact->cont_fakultas;
-		$telp1 = $contact->cont_telp1;
-		$telp2 = $contact->cont_telp2;
-		$fax = $contact->cont_fax;
-		$email = $contact->cont_email;
-		$wa = $contact->cont_wa;
-		$sosmed = $contact->cont_sosmed;
+		$fullname = $contact->fullname;
+		$type = $contact->type;
+		$prodi = $contact->prodi;
+		$fakultas = $contact->fakultas;
+		$no_telp = $contact->no_telp;
+		$email = $contact->email;
+		$whatsapp = $contact->whatsapp;
 	}
 
 	?>
@@ -110,33 +102,19 @@
 							<div class="col-2">
 								<div class="input-group">
 									<label class="label">Name</label>
-									<input class="input--style-4" type="text" name="cont_nama" value="<?= set_value('cont_nama', $name) ?>" required>
+									<input class="input--style-4" type="text" name="fullname" value="<?= set_value('fullname', $fullname) ?>" required>
 								</div>
 							</div>
 							<div class="col-2">
 								<div class="input-group">
-									<label class="label">Jobdesk</label>
-									<select name="cont_jobdesk" class="listbox1">
+									<label class="label">Proffesion/Job</label>
+									<select name="type" class="listbox1">
 										<div class="dropdown-content">
-											<option value="<?= set_value('cont_jobdesk', $jobdesk) ?>">Tenaga Kependidikan</option>
-											<option value="<?= set_value('cont_jobdesk', $jobdesk) ?>">Dosen</option>
+											<option value="<?= set_value('type', $type) ?>">Mahasiswa</option>
+											<option value="<?= set_value('type', $type) ?>">Dosen</option>
+											<option value="<?= set_value('type', $type) ?>">Tenaga Kependidikan</option>
 										</div>
 									</select>
-								</div>
-							</div>
-						</div>
-						<div class="col-6">
-							<div class="input-group">
-								<label class="label">Contact Type</label>
-								<div class="p-t-10">
-									<label class="radio-container m-r-45">General
-										<input type="radio" name="cont_type" value="General" <?= set_radio('cont_type', 'General', $type == 'General' ? TRUE : FALSE) ?> required>
-										<span class="checkmark"></span>
-									</label>
-									<label class="radio-container">Private
-										<input type="radio" name="cont_type" value="Private" <?= set_radio('cont_type', 'Private', $type == 'Private' ? TRUE : FALSE) ?> required>
-										<span class="checkmark"></span>
-									</label>
 								</div>
 							</div>
 						</div>
@@ -144,42 +122,28 @@
 						<div class="row row-space">
 							<div class="col-2">
 								<div class="input-group">
-									<label class="label">Prodi</label>
-									<input class="input--style-4" type="text" name="cont_prodi" value="<?= set_value('cont_prodi', $prodi) ?>" required>
-								</div>
-							</div>
-							<div class="col-2">
-								<div class="input-group">
 									<label class="label">Fakultas</label>
-									<input class="input--style-4" type="text" name="cont_fakultas" value="<?= set_value('cont_fakultas', $fakultas) ?>" required>
+									<input class="input--style-4" type="text" name="fakultas" value="<?= set_value('fakultas', $fakultas) ?>" required>
+								</div>
+							</div>
+							<div class="col-2">
+								<div class="input-group">
+									<label class="label">Prodi</label>
+									<input class="input--style-4" type="text" name="prodi" value="<?= set_value('prodi', $prodi) ?>" required>
 								</div>
 							</div>
 						</div>
 						<div class="row row-space">
 							<div class="col-2">
 								<div class="input-group">
-									<label class="label">Telp 1</label>
-									<input class="input--style-4" type="number" name="cont_telp1" value="<?= set_value('cont_telp1', $telp1) ?>" required>
-								</div>
-							</div>
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">Telp 2</label>
-									<input class="input--style-4" type="number" name="cont_telp2" value="<?= set_value('cont_telp2', $telp2) ?>">
-								</div>
-							</div>
-						</div>
-						<div class="row row-space">
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">Fax</label>
-									<input class="input--style-4" type="text" name="cont_fax" value="<?= set_value('cont_fax', $fax) ?>">
+									<label class="label">Telp</label>
+									<input class="input--style-4" type="number" name="no_telp" value="<?= set_value('no_telp', $no_telp) ?>" required>
 								</div>
 							</div>
 							<div class="col-2">
 								<div class="input-group">
 									<label class="label">Email</label>
-									<input class="input--style-4" type="text" name="cont_email" value="<?= set_value('cont_email', $email) ?>" required>
+									<input class="input--style-4" type="text" name="email" value="<?= set_value('email', $email) ?>" required>
 								</div>
 							</div>
 						</div>
@@ -187,13 +151,7 @@
 							<div class="col-2">
 								<div class="input-group">
 									<label class="label">WhatsApp</label>
-									<input class="input--style-4" type="text" name="cont_wa" value="<?= set_value('cont_wa', $wa) ?>" required>
-								</div>
-							</div>
-							<div class="col-2">
-								<div class="input-group">
-									<label class="label">Sosmed</label>
-									<input class="input--style-4" type="text" name="cont_sosmed" value="<?= set_value('cont_sosmed', $sosmed) ?>">
+									<input class="input--style-4" type="text" name="whatsapp" value="<?= set_value('whatsapp', $whatsapp) ?>" required>
 								</div>
 							</div>
 						</div>
@@ -238,7 +196,7 @@
 	<?php
 	$name = '';
 	$type = '';
-	$jobdesk = '';
+	$type = '';
 	$prodi = '';
 	$fakultas = '';
 	$telp1 = '';
@@ -249,7 +207,7 @@
 	$sosmed = '';
 
 	if (isset($contact)) {
-		$name = $contact->cont_nama;
+		$name = $contact->nama;
 		$type = $contact->cont_type;
 		$jobdesk = $contact->cont_jobdesk;
 		$prodi = $contact->cont_prodi;

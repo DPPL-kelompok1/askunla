@@ -34,7 +34,7 @@
 </style>
 
 <body>
-	<div class="limiter">
+<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
@@ -47,7 +47,7 @@
 
 					</span>
 					<div class="wrap-input100 validate-input" data-validate="Valid NPM is required: 41155050000">
-						<input class="input100" type="text" name="username" placeholder="NPM">
+						<input class="input100" type="text" name="username" placeholder="NPM / NIP">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fas fa-id-badge" aria-hidden="true"></i>
@@ -64,6 +64,64 @@
 					</div>
 					<?= form_error('fullname') ?>
 
+					<div class="wrap-input100 validate-input" data-validate="Valid type is required: Mahasiswa, Dosen, Tenaga Kependidikan">
+					<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-users" aria-hidden="true"></i>
+						</span>
+					<select class="input100" type="text" name="type" placeholder="Type">
+					<option value="">User Type</option>
+						<option value="Dosen">Dosen</option>
+						<option value="Mahasiswa">Mahasiswa</option>
+						<option value="Tenaga Kependidikan">Tenaga Kependidikan</option>
+					</select>
+					</div>
+					<?= form_error('type') ?>
+
+					<div class="wrap-input100">
+					<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-university" aria-hidden="true"></i>
+						</span>
+					<select class="input100" type="text" name="fakultas" placeholder="Fakultas">
+					<option value="">Fakultas</option>
+						<option value="Hukum">Hukum</option>
+						<option value="Ekonomi">Ekonomi</option>
+						<option value="Ilmu Sosial dan Ilmu Politik">Ilmu Sosial dan Ilmu Politik</option>
+						<option value="Keguruan dan Ilmu Pendidikan">Keguruan dan Ilmu Pendidikan</option>
+						<option value="Teknik">Teknik</option>
+						<option value="Pascasarjana">Pascasarjana</option>
+					</select>
+					</div>
+					<?= form_error('fakultas') ?>
+
+					<div class="wrap-input100">
+					<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-building" aria-hidden="true"></i>
+						</span>
+					<select class="input100" type="text" name="prodi" placeholder="Prodi">
+						<option value="">Prodi</option>
+						<option value="Ilmu Hukum S1">Ilmu Hukum S1</option>
+						<option value="Manajemen S1">Manajemen S1</option>
+						<option value="Akuntansi S1">Akuntansi S1</option>
+						<option value="Ilmu Pemerintahan S1">Ilmu Pemerintahan S1</option>
+						<option value="Ilmu Kesejahteraan S1">Ilmu Kesejahteraan S1</option>
+						<option value="Ilmu Komunikasi S1">Ilmu Komunikasi S1</option>
+						<option value="Kepolisian D3">Kepolisian D3</option>
+						<option value="Pend. Ekonomi/Akuntansi S1">Ilmu Komunikasi S1</option>
+						<option value="Pend. Matematika S1">Pend. Matematika S1</option>
+						<option value="PGSD S1">PGSD S1</option>
+						<option value="Teknik Industri S1">Teknik Industri S1</option>
+						<option value="Teknik Sipil S1">Teknik Sipil S1</option>
+						<option value="Arsitektur S1">Arsitektur S1</option>
+						<option value="Teknik Elektro S1">Teknik Elektro S1</option>
+						<option value="Teknik Informatika S1">Teknik Informatika S1</option>
+						<option value="Pascasarjana">Pascasarjana</option>
+					</select>
+					</div>
+					<?= form_error('prodi') ?>
+
 					<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
@@ -77,10 +135,19 @@
 						<input class="input100" type="text" name="notelp" placeholder="No. Telp">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<i class="fas fa-phone-square-alt" aria-hidden="true"></i>
+							<i class="fa fa-tty" aria-hidden="true"></i>
 						</span>
 					</div>
 					<?= form_error('notelp') ?>
+
+					<div class="wrap-input100 validate-input" data-validate="Valid no. tlp is required: 0888888888">
+						<input class="input100" type="text" name="whatsapp" placeholder="WhatsApp">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fas fa-phone-square-alt " aria-hidden="true"></i>
+						</span>
+					</div>
+					<?= form_error('whatsapp') ?>
 
 					<div class="container-login100-form-btn">
 						<input type="submit" name="submit" class="login100-form-btn" value="REGISTER">

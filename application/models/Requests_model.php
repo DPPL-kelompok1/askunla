@@ -9,7 +9,7 @@ class Requests_model extends CI_Model
 		$data = array(
 			'userid' => $this->input->post('userid'),
 			'id_cont' => $this->input->post('cont_id'),
-			'specify' => $this->input->post('contact'),
+			// 'specify' => $this->input->post('contact'),
 			'reason' => $this->input->post('reason'),
 		);
 		$this->db->insert('request', $data);
@@ -51,9 +51,32 @@ class Requests_model extends CI_Model
 
 	public function readtype($type)
 	{
-		$this->db->where('cont_type', $type);
-		$query = $this->db->get('contact');
+		$this->db->where('type', $type);
+		$query = $this->db->get('user');
 		return $query->result();
+	}
+
+	public function readtype1($prodi)
+	{
+		if ($prodi == '') {
+			$query = $this->db->get('contact');
+			return $query->result();
+		} else {
+			$this->db->where('prodi', $prodi);
+			$query = $this->db->get('contact');
+			return $query->result();
+		}
+	}
+	public function readtype2($type)
+	{
+		if ($type == '') {
+			$query = $this->db->get('contact');
+			return $query->result();
+		} else {
+			$this->db->where('type', $type);
+			$query = $this->db->get('contact');
+			return $query->result();
+		}
 	}
 
 	public function sendmail($id)

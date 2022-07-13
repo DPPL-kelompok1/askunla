@@ -160,7 +160,7 @@
               </a>
             </div>
 
-            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <!-- <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
               <a href="<?= site_url('contacts') ?>">
                 <div class="icon-box">
                   <div class="icon"><i class="fas fa-address-book"></i></div>
@@ -168,7 +168,7 @@
                   <p class="description">Management Data Contact Ask Unla</p>
                 </div>
               </a>
-            </div>
+            </div> -->
 
             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
               <a href="<?= site_url('users') ?>">
@@ -198,7 +198,7 @@
 
           <div class="row" style="display: flex;  justify-content: center">
 
-            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <!-- <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
               <a href="<?= site_url('requests/cont_general') ?>">
                 <div class="icon-box">
                   <div class="icon"><i class="fas fa-address-book"></i></div>
@@ -206,14 +206,14 @@
                   <p class="description">All Contact Dosen / Umum Ask Unla</p>
                 </div>
               </a>
-            </div>
+            </div> -->
 
             <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
               <a href="<?= site_url('requests/cont_privt') ?>">
                 <div class="icon-box">
                   <div class="icon"><i class="fas fa-phone-square"></i></div>
-                  <h4 class="title">Request Private Contact</h4>
-                  <p class="description">Request Contact Dosen / Umum Ask Unla</p>
+                  <h4 class="title">Request All Contact</h4>
+                  <p class="description">Request All Contact Ask Unla</p>
                 </div>
               </a>
             </div>
